@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08060b">
+<title>SUPERVECTAR ESPECIAL HALLOWEEN</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Creepster&display=swap');
+
+:root {
+  --bg: #08060b;
+  --card: rgba(5, 5, 10, .92);
+  --muted: #c5c0c8;
+  --highlight: #ff1717;
+  --font-size: 16px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background-color: var(--bg);
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,.78)),
+    url("https://images.unsplash.com/photo-1509557965875-b88c97052f0e?auto=format&fit=crop&w=2400&q=85");
+  background-position: center center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  color: #fff;
+  margin: 0;
+  padding: 16px;
+  font-size: var(--font-size);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 18px;
+  padding: 12px;
+  border: 1px solid rgba(255, 23, 23, .45);
+  border-radius: 14px;
+  background: rgba(0, 0, 0, .62);
+  box-shadow: 0 8px 28px rgba(0,0,0,.3);
+  backdrop-filter: blur(8px);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.brand img {
+  height: 46px;
+  width: 46px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid var(--highlight);
+  flex: 0 0 auto;
+}
+
+h1 {
+  font-family: "Creepster", "Impact", fantasy;
+  font-size: clamp(28px, 4.2vw, 48px);
+  letter-spacing: 1.2px;
+  line-height: 1;
+  margin: 0;
+  color: #ff1717;
+  font-weight: 400;
+  text-shadow: 0 0 5px #ff0000, 0 0 13px rgba(255,0,0,.9), 0 0 24px rgba(255,0,0,.45);
+}
+
+.controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  margin-left: auto;
+}
+
+input[type="search"], select {
+  min-width: 0;
+  padding: 11px 13px;
+  border-radius: 10px;
+  border: 1px solid var(--highlight);
+  background: rgba(15, 0, 0, .96);
+  color: #fff;
+  font-weight: 700;
+  font-size: 15px;
+  box-shadow: 0 0 10px rgba(255,0,0,.14);
+}
+
+input[type="search"] {
+  width: min(230px, 100%);
+}
+
+input[type="search"]::placeholder {
+  color: #fff;
+  opacity: 1;
+}
+
+select option {
+  background: #10090d;
+  color: #fff;
+}
+
+h2 {
+  font-family: "Creepster", "Impact", fantasy;
+  font-size: clamp(34px, 4.6vw, 52px);
+  letter-spacing: 1px;
+  line-height: 1;
+  margin: 24px 0 18px;
+  color: #ff1717;
+  font-weight: 400;
+  text-shadow: 0 0 5px #ff0000, 0 0 14px rgba(255,0,0,.95), 0 0 26px rgba(255,0,0,.45);
+  position: relative;
+  width: fit-content;
+}
+
+h2::after {
+  content: "";
+  display: block;
+  width: 62%;
+  height: 5px;
+  margin-top: 7px;
+  border-radius: 50%;
+  background: #ff1717;
+  box-shadow: 0 0 10px rgba(255,0,0,.9);
+  transform: rotate(-2deg);
+}
+
+#notice {
+  color: #fff;
+  background: rgba(0, 0, 0, .78);
+  border: 1px solid rgba(255, 23, 23, .8);
+  border-radius: 10px;
+  padding: 12px 14px;
+  line-height: 1.5;
+  box-shadow: 0 5px 18px rgba(0,0,0,.28);
+  backdrop-filter: blur(5px);
+}
+
+#notice a {
+  color: #ff4545;
+  font-weight: 800;
+  text-underline-offset: 3px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+  scroll-behavior: smooth;
+}
+
+.card {
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  outline: none;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  background: var(--card);
+  color: #fff;
+  border: 1px solid rgba(255, 30, 30, .55);
+  box-shadow: 0 5px 18px rgba(0,0,0,.45);
+  min-width: 0;
+  backdrop-filter: blur(4px);
+}
+
+.card:hover, .card:focus-visible {
+  transform: translateY(-3px) scale(1.025);
+  border-color: #ff1717;
+  box-shadow: 0 0 22px rgba(255,0,0,.5);
+}
+
+.card .img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: #171219;
+}
+
+.card .info {
+  padding: 9px 10px 12px;
+}
+
+.card .title {
+  font-weight: 750;
+  font-size: 14px;
+  line-height: 1.35;
+  margin-top: 2px;
+}
+
+.card .meta {
+  color: var(--muted);
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.pagination button {
+  padding: 9px 13px;
+  border-radius: 7px;
+  border: 1px solid #ff1717;
+  background: rgba(0,0,0,.78);
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.pagination button.active,
+.pagination button:hover,
+.pagination button:focus-visible {
+  background: #e00000;
+  color: #fff;
+  outline: none;
+}
+
+.empty {
+  grid-column: 1 / -1;
+  padding: 24px;
+  text-align: center;
+  border-radius: 10px;
+  background: rgba(0,0,0,.75);
+  border: 1px solid rgba(255,23,23,.5);
+  color: #fff;
+}
+
+@media (min-width: 601px) {
+  header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+  }
+
+  .brand {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .controls {
+    flex: 0 1 auto;
+    margin-left: auto;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 600px) {
+  body {
+    padding: 10px;
+    background-attachment: scroll;
+  }
+
+  header {
+    align-items: stretch;
+    padding: 10px;
+  }
+
+  .brand { width: 100%; }
+  .brand img { width: 40px; height: 40px; }
+  h1 { font-size: clamp(24px, 7vw, 34px); line-height: 1.02; }
+
+  .controls {
+    width: 100%;
+    margin-left: 0;
+    justify-content: stretch;
+  }
+  input[type="search"] { flex: 1 1 100%; width: 100%; }
+  .controls select { flex: 1 1 auto; }
+
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .card .img { height: clamp(150px, 54vw, 220px); }
+  .card:hover, .card:focus-visible { transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="brand">
+    <img src="https://i.ibb.co/7dGjZb80/6.jpg" alt="Logo de Supervectar">
+    <div><h1>SUPERVECTAR ESPECIAL HALLOWEEN</h1></div>
+  </div>
+
+  <div class="controls">
+    <input id="search" type="search" placeholder="Buscar..." aria-label="Buscar películas y series">
+
+    <select id="genre-filter" aria-label="Filtrar por género">
+      <option value="all">Género</option>
+      <option value="Acción">Acción</option>
+      <option value="Comedia española">Comedia española</option>
+      <option value="Comedia">Comedia</option>
+      <option value="Drama">Drama</option>
+      <option value="Sci-Fi">Sci-Fi</option>
+      <option value="Thriller">Thriller</option>
+      <option value="Terror">Terror</option>
+      <option value="Retro">Retro</option>
+      <option value="Animacion">Animación</option>
+    </select>
+
+    <select id="filterYear" aria-label="Filtrar por año">
+      <option value="">Año</option>
+    </select>
+  </div>
+</header>
+
+<div id="notice">
+  ⚠️ Para acceder a algunas webs necesitas estar conectado a un servidor VPN:
+  <a href="https://one.one.one.one/es-ES/" target="_blank" rel="noopener noreferrer">Descargar aquí VPN WARP 1.1.1.1</a>
+</div>
+
+<main>
+  <h2>Películas y Series</h2>
+  <div id="movies-grid" class="grid"></div>
+  <div id="movies-pagination" class="pagination" aria-label="Paginación del catálogo"></div>
+</main>
+
+<script>
+const mediaData = [
+  { id:'evil dead', title:'Evil Dead (saga)', year:1981, genre:'Terror', poster:'https://i.ibb.co/gZ9YNQ98/evildeadlogo.png', link:'https://supervectar-coder.github.io/VEREVILDEAD/' },
+  { id:'ash', title:'Ash vs evil dead (La serie)', year:2015, genre:'Terror', poster:'https://es.web.img3.acsta.net/r_1920_1080/pictures/15/08/20/13/10/401726.jpg', link:'https://supervectar-coder.github.io/VERASHVSEVILDEAD/' },
+  { id:'freddy', title:'Freddy Krueger (saga)', year:1984, genre:'Terror', poster:'https://i.ibb.co/ZzCj0w54/freddy.jpg', link:'https://supervectar-coder.github.io/VERFREDDYKRUEGER/' },
+  { id:'laspesadillasdefreddy', title:'Las pesadillas de Freddy (La serie)', year:1988, genre:'Terror', poster:'https://i.ibb.co/Z6P7GfDw/LASPESADILLASDEFREDDY.jpg', link:'https://supervectar-coder.github.io/VERLASPESADILLASDEFREDDY/' },
+  { id:'jason', title:'Jason Voorhees (saga)', year:1980, genre:'Terror', poster:'https://i.ibb.co/B5fdWZdx/Jason.jpg', link:'https://supervectar-coder.github.io/VERJASONVOORHEES/' },
+  { id:'myers', title:'Michael Myers (saga)', year:1978, genre:'Terror', poster:'https://i.ibb.co/HLbSfHXn/Michael-Myers.jpg', link:'https://supervectar-coder.github.io/VERMICHAELMYERS/' },
+  { id:'art', title:'Art the clown (saga)', year:2013, genre:'Terror', poster:'https://i.ibb.co/tPLhWw1k/Art-the-Clown.jpg', link:'https://supervectar-coder.github.io/VERARTTHECLOWN/' },
+  { id:'whistle', title:'Whistle el sibido del mal', year:2026, genre:'Terror', poster:'https://filedn.com/lTs3E9lEzCxftG4kMyikVWJ/000PORTADAS/Whistle%20El%20silbido%20del%20mal%20(2026).jpg', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/00.%20LATINO/Whistle%20El%20silbido%20del%20mal%20(2026)%20DVD%20S.mp4' },
+  { id:'scream7', title:'Scream 7', year:2026, genre:'Terror', poster:'https://es.web.img3.acsta.net/r_1920_1080/img/f9/57/f957e82b8374af3029d4e7acc0b62229.png', link:'https://filedn.com/ldXVm4wO7JdkpAf1xjDEu6B/ESPA%C3%91OL/S/Scream%207%20(HD)%202026.mp4' }
+];
+
+const itemsPerPage = 200;
+let moviePage = 1;
+let filteredData = [...mediaData];
+
+const searchEl = document.getElementById('search');
+const genreEl = document.getElementById('genre-filter');
+const yearEl = document.getElementById('filterYear');
+const moviesEl = document.getElementById('movies-grid');
+const moviesPagEl = document.getElementById('movies-pagination');
+
+[...new Set(mediaData.map(item => item.year))]
+  .sort((a, b) => b - a)
+  .forEach(year => {
+    const option = document.createElement('option');
+    option.value = String(year);
+    option.textContent = String(year);
+    yearEl.appendChild(option);
+  });
+
+function renderMovies(data) {
+  const totalPages = Math.max(1, Math.ceil(data.length / itemsPerPage));
+  if (moviePage > totalPages) moviePage = totalPages;
+
+  const start = (moviePage - 1) * itemsPerPage;
+  const pageItems = data.slice(start, start + itemsPerPage);
+  moviesEl.replaceChildren();
+
+  if (pageItems.length === 0) {
+    const empty = document.createElement('div');
+    empty.className = 'empty';
+    empty.textContent = 'No se encontraron películas o series con esos filtros.';
+    moviesEl.appendChild(empty);
+  } else {
+    pageItems.forEach(item => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.tabIndex = 0;
+      card.setAttribute('role', 'link');
+      card.setAttribute('aria-label', 'Abrir ' + item.title);
+
+      const img = document.createElement('img');
+      img.className = 'img';
+      img.src = item.poster;
+      img.alt = 'Cartel de ' + item.title;
+      img.loading = 'lazy';
+      img.onerror = () => { img.style.visibility = 'hidden'; };
+
+      const info = document.createElement('div');
+      info.className = 'info';
+
+      const title = document.createElement('div');
+      title.className = 'title';
+      title.textContent = item.title;
+
+      const meta = document.createElement('div');
+      meta.className = 'meta';
+      meta.textContent = item.year + ' • ' + item.genre;
+
+      info.append(title, meta);
+      card.append(img, info);
+
+      const openItem = () => window.open(item.link, '_blank', 'noopener,noreferrer');
+      card.addEventListener('click', openItem);
+      card.addEventListener('keydown', event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          openItem();
+        }
+      });
+
+      moviesEl.appendChild(card);
+    });
+  }
+
+  moviesPagEl.replaceChildren();
+  if (totalPages > 1) {
+    for (let page = 1; page <= totalPages; page++) {
+      const button = document.createElement('button');
+      button.textContent = String(page);
+      button.type = 'button';
+      button.setAttribute('aria-label', 'Página ' + page);
+      if (page === moviePage) {
+        button.classList.add('active');
+        button.setAttribute('aria-current', 'page');
+      }
+      button.addEventListener('click', () => {
+        moviePage = page;
+        renderMovies(filteredData);
+      });
+      moviesPagEl.appendChild(button);
+    }
+  }
+}
+
+function applyFilters() {
+  const query = searchEl.value.trim().toLocaleLowerCase('es');
+  const genre = genreEl.value;
+  const year = yearEl.value;
+
+  filteredData = mediaData.filter(item =>
+    (genre === 'all' || item.genre === genre) &&
+    (!year || String(item.year) === year) &&
+    item.title.toLocaleLowerCase('es').includes(query)
+  );
+
+  moviePage = 1;
+  renderMovies(filteredData);
+}
+
+searchEl.addEventListener('input', applyFilters);
+genreEl.addEventListener('change', applyFilters);
+yearEl.addEventListener('change', applyFilters);
+
+renderMovies(filteredData);
+</script>
+</body>
+</html>
